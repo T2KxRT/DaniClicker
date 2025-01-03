@@ -78,6 +78,11 @@ document.getElementById('options-button').addEventListener('click', () => {
   optionsMenu.classList.toggle('hidden');
 });
 
+document.getElementById('cookie-image').addEventListener('change', (event) => {
+  const cookieImage = document.getElementById('cookie');
+  cookieImage.src = `images/${event.target.value}.png`;
+});
+
 // Spin toggle functionality
 document.getElementById('spin-toggle').addEventListener('change', (event) => {
   const cookieImage = document.getElementById('cookie');
