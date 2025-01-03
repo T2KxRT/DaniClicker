@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dani Clicker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 id="click-counter">Clicks: <span id="clicks">0</span></h1>
+    <div class="game-area">
+      <img id="cookie" src="images/coolguy.png" alt="Cookie">
+      <img id="drink" src="drink/drink0.png" alt="Drink" class="hidden">
+    </div>
+    <button id="options-button">Options</button>
+    <button id="credits-button">Credits</button>
+    <button id="music-button">Music: Off</button>
+    <div id="credits-popup" class="hidden">
+      <p>All credits fall under the name of T3Zark</p>
+      <button id="close-credits">Close</button>
+    </div>
+    <div id="options-menu" class="hidden">
+      <h2>Options</h2>
+      <div class="options-left">
+        <button id="2x-upgrade">Buy 2x Click Upgrade (200 Clicks)</button>
+        <button id="3x-upgrade">Buy 3x Click Upgrade (300 Clicks)</button>
+        <button id="4x-upgrade">Buy 4x Click Upgrade (400 Clicks)</button>
+        <button id="5x-upgrade">Buy 5x Click Upgrade (500 Clicks)</button>
+        <button id="6x-upgrade">Buy 6x Click Upgrade (600 Clicks)</button>
+      </div>
+      <div class="options-right">
+        <button id="7x-upgrade">Buy 7x Click Upgrade (700 Clicks)</button>
+        <button id="8x-upgrade">Buy 8x Click Upgrade (800 Clicks)</button>
+        <button id="9x-upgrade">Buy 9x Click Upgrade (900 Clicks)</button>
+        <button id="10x-upgrade">Buy 10x Click Upgrade (1000 Clicks)</button>
+        <button id="sober-button" class="hidden">Sober (Reset)</button>
+      </div>
+      <div class="options-bottom">
+        <label for="cookie-image">Change Cookie Image:</label>
+        <select id="cookie-image">
+          <option value="coolguy">Cool Guy (Default)</option>
+          <option value="coolguy1" disabled>Cool Guy 1 (Locked)</option>
+          <option value="coolguy2" disabled>Cool Guy 2 (Locked)</option>
+          <option value="coolguy3" disabled>Cool Guy 3 (Locked)</option>
+        </select>
+        <label for="spin-toggle">Spin Cookie:</label>
+        <input type="checkbox" id="spin-toggle">
+      </div>
+    </div>
+  </div>
+  <audio id="background-music" loop>
+    <source src="music/coolmusic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('credits-button').addEventListener('click', () => {
+      const creditsPopup = document.getElementById('credits-popup');
+      creditsPopup.classList.remove('hidden');
+
+      setTimeout(() => {
+        creditsPopup.classList.add('hidden');
+      }, 20000); // Automatically close after 20 seconds
+    });
+
+    document.getElementById('close-credits').addEventListener('click', () => {
+      const creditsPopup = document.getElementById('credits-popup');
+      creditsPopup.classList.add('hidden');
+    });
+
+    // Music button functionality
+    const musicButton = document.getElementById('music-button');
+    const backgroundMusic = document.getElementById('background-music');
+
+    musicButton.addEventListener('click', () => {
+      if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        musicButton.textContent = 'Music: On';
+      } else {
+        backgroundMusic.pause();
+        musicButton.textContent = 'Music: Off';
+      }
+    });
+  </script>
+</body>
+</html>
